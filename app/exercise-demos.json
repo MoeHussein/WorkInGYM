@@ -1,0 +1,154 @@
+{
+  "leg-press": {
+    "url": "https://www.youtube.com/watch?v=q4W4_VJbKW0",
+    "title": "How To Do A 45 Degree Leg Press",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/leg-presses/45-degree-leg-press/",
+    "note": "The demo uses a 45-degree machine. Ask staff to show you the settings on your gym\u2019s model."
+  },
+  "chest-press": {
+    "url": "https://www.youtube.com/watch?v=CIykDiF4sfg",
+    "title": "How To Do A Seated Chest Press",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/seated-chest-press/",
+    "note": null
+  },
+  "supported-row": {
+    "url": "https://www.youtube.com/watch?v=Nx0TzjgsI-0",
+    "title": "How To Do An Incline Row (Chest Supported Row)",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/back/rows/incline-row/",
+    "note": "The demo uses dumbbells on an incline bench. A chest-supported row machine is also suitable."
+  },
+  "leg-curl": {
+    "url": "https://www.youtube.com/watch?v=3BWiLFc8Dbg",
+    "title": "Seated Leg Curl Video Exercise Guide",
+    "source": "Muscle & Strength",
+    "durationSeconds": null,
+    "sourcePage": "https://www.muscleandstrength.com/exercises/seated-leg-curl",
+    "note": null
+  },
+  "lateral-raise": {
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+    "title": "Dumbbell Lateral Raise Video Exercise Guide",
+    "source": "Muscle & Strength",
+    "durationSeconds": null,
+    "sourcePage": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+    "note": null
+  },
+  "dead-bug": {
+    "url": "https://www.youtube.com/watch?v=9RK9UUgKIQE",
+    "title": "How To Do Deadbugs",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/abs/deadbugs/",
+    "note": null
+  },
+  "lat-pulldown": {
+    "url": "https://www.youtube.com/watch?v=IjoFCmLX7z0",
+    "title": "How To Do A Close Grip (Neutral) Lat Pulldown",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/back/lat-exercises/close-grip-lat-pulldown/",
+    "note": null
+  },
+  "split-squat": {
+    "url": "https://www.youtube.com/watch?v=rlvpaDkc76g",
+    "title": "How To Do Split Squats",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/squats/split-squats/",
+    "note": "Hold a stable support and start without weights. The demo shows the same stationary movement without support."
+  },
+  "incline-press": {
+    "url": "https://www.youtube.com/watch?v=oZVCBM9f8Eo",
+    "title": "How To Do An Incline Dumbbell Press",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/incline-dumbbell-press/",
+    "note": null
+  },
+  "glute-bridge": {
+    "url": "https://www.youtube.com/watch?v=tqp5XQPpTxY",
+    "title": "How To Do A Glute Bridge",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/glutes/glute-bridge/glute-bridges/",
+    "note": null
+  },
+  "reverse-pec-deck": {
+    "url": "https://www.youtube.com/watch?v=hosMrtU1BA8",
+    "title": "Reverse Pec Deck",
+    "source": "One Coaching",
+    "durationSeconds": null,
+    "sourcePage": "https://onecoaching.co.uk/exercise/reverse-pec-deck/",
+    "note": null
+  },
+  "dumbbell-curl": {
+    "url": "https://www.youtube.com/watch?v=MtXdEcW3Eog",
+    "title": "How To Do A Double Arm Curl (Dumbbell Bicep Curl)",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/arms-and-shoulders/bicep-curl/dumbbell-bicep-curls/",
+    "note": "The demo is seated. Keep your upper arms steady if you perform your curls standing."
+  },
+  "pallof-press": {
+    "url": "https://theprehabguys.com/vimeo-video/pallof-press/",
+    "title": "Pallof Press",
+    "source": "[P]rehab",
+    "durationSeconds": 49,
+    "sourcePage": "https://theprehabguys.com/vimeo-video/pallof-press/",
+    "note": null
+  },
+  "goblet-squat": {
+    "url": "https://www.youtube.com/watch?v=zBV3ceGyAxw",
+    "title": "How To Do A Goblet Squat",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/squats/goblet-squat/",
+    "note": "Use a stable bench behind you. Touch it lightly rather than dropping or rocking onto it."
+  },
+  "dumbbell-rdl": {
+    "url": "https://www.youtube.com/watch?v=QFbZevA7dps",
+    "title": "How to do a Dumbbell Romanian Deadlift | Proper Form & Technique | NASM",
+    "source": "National Academy of Sports Medicine (NASM)",
+    "durationSeconds": null,
+    "sourcePage": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+    "note": null
+  },
+  "cable-row": {
+    "url": "https://www.youtube.com/watch?v=lJoozxC0Rns",
+    "title": "How To Do A Seated Cable Row",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=lJoozxC0Rns",
+    "note": null
+  },
+  "calf-raise": {
+    "url": "https://www.youtube.com/watch?v=Zep-wKHWkNM",
+    "title": "How To Do A Calf Raise",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.puregym.com/exercises/legs/calf-exercises/calf-raises/",
+    "note": null
+  },
+  "triceps-pressdown": {
+    "url": "https://theprehabguys.com/vimeo-video/tricep-pushdown-rope/",
+    "title": "Tricep Pushdown - Rope",
+    "source": "[P]rehab",
+    "durationSeconds": 33,
+    "sourcePage": "https://theprehabguys.com/vimeo-video/tricep-pushdown-rope/",
+    "note": null
+  },
+  "side-plank": {
+    "url": "https://theprehabguys.com/vimeo-video/side-plank-on-knees/",
+    "title": "Side Plank - On Knees",
+    "source": "[P]rehab",
+    "durationSeconds": 73,
+    "sourcePage": "https://theprehabguys.com/vimeo-video/side-plank-on-knees/",
+    "note": null
+  }
+}
