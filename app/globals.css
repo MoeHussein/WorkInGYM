@@ -1188,27 +1188,6 @@ h1 > span {
   background: #f9faf5;
   min-width: 150px;
 }
-.extra-set-label {
-  grid-column: 1/-1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-  font-size: 12px;
-  cursor: pointer;
-}
-.extra-set-label input {
-  accent-color: var(--green);
-  width: 18px;
-  height: 18px;
-}
-.extra-set-label small {
-  display: block;
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 4px;
-}
 .health-note {
   margin-top: 22px;
   padding: 0 5px;
@@ -1853,14 +1832,8 @@ footer > span {
     max-width: 220px;
     font-size: 16px;
   }
-  .extra-set-label {
-    grid-column: auto;
-  }
   .settings-card p {
     font-size: 12px;
-  }
-  .extra-set-label small {
-    font-size: 11px;
   }
   .health-note summary {
     font-size: 12px;

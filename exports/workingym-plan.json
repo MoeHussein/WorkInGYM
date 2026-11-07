@@ -1,185 +1,98 @@
 {
   "name": "WorkInGYM",
-  "schemaVersion": 1,
-  "scheduleVersion": 1,
-  "programStart": "2026-10-17",
-  "cycleLengthWeeks": 6,
-  "schedule": "Saturday / Monday / Wednesday by default; three nonconsecutive full-body sessions.",
-  "progression": "Weeks 1-2: two working sets with 3-4 repetitions left. From week 3: optional third set for the first three exercises, only when recovery is good. Increase load after reaching the top of every set with good control and at least two repetitions left.",
+  "schemaVersion": 2,
+  "scheduleVersion": 2,
+  "programStart": "2026-11-08",
+  "schedule": "Sunday A / Monday walk / Tuesday B / Wednesday walk / Thursday C / Friday rest / Saturday cardio by default.",
+  "progression": "Full volume from week 1. Stop each set with 1-2 reps left. Add weight after reaching the top of the range on every set. Pull-ups: add one rep to one set each week up to 5 x 5, then 4 x 6-8, then add weight.",
+  "warmUp": "Chin tucks 2 × 10 (head straight back, hold 2 s) and band pull-aparts 2 × 20. Before any lift marked Heavy or Main, do 2 lighter warm-up sets.",
+  "finish": "Doorway chest stretch 2 × 30 s per side (elbow at shoulder height) and half-kneeling hip-flexor stretch 30 s per side (squeeze the glute).",
+  "cardio": "At least 120 minutes a week: 60-minute cardio day plus two 30-minute brisk walks.",
   "weekGuidance": [
     {
       "week": 1,
-      "label": "Find your starting point",
-      "guidance": "Two working sets per exercise. Finish with 3–4 clean repetitions left. Learn the equipment and record comfortable starting weights."
+      "label": "Find your working weights",
+      "guidance": "Full volume from day one. Choose loads where every set ends with 1–2 clean reps left. Log every set so next week has a target."
     },
     {
       "week": 2,
-      "label": "Repeat with control",
-      "guidance": "Keep two sets and 3–4 repetitions in reserve. Add repetitions within your range when your movement stays comfortable."
+      "label": "Beat last week",
+      "guidance": "Add reps within the range before adding weight. Pull-ups: add one rep to one set. Assisted dips: use a little less assistance when 3 × 8 feels easy."
     },
     {
       "week": 3,
-      "label": "Build when ready",
-      "guidance": "If recovery is good, enable the optional third set for the first three exercises. Keep 2–3 repetitions in reserve."
+      "label": "Add weight when earned",
+      "guidance": "When every set reaches the top of its range with 1–2 reps left, use the smallest weight increase next session."
     },
     {
       "week": 4,
-      "label": "Make progress repeatable",
-      "guidance": "Reach the top of your repetition range on every set with at least two repetitions left before adding the smallest weight increase."
+      "label": "Four-week check-in",
+      "guidance": "Note which lifts rose and which stalled, your pull-up max, session length, any joint pain, energy and your average weight. Use them to adjust the plan."
     },
     {
       "week": 5,
-      "label": "Small steps count",
-      "guidance": "Progress one thing at a time: repetitions, then load. Keep the same exercises and equipment settings so your logs are comparable."
+      "label": "Keep the progression going",
+      "guidance": "Progress one thing at a time: reps, then load. Keep the same machines and settings so your logs stay comparable."
     },
     {
       "week": 6,
-      "label": "Review your block",
-      "guidance": "Review your weights, consistency, comfort and recovery. Do not automatically restart the block or test maximum lifts. Use your logs to plan what comes next."
+      "label": "Keep building · review often",
+      "guidance": "If lifts stall for two weeks and joints ache, do one lighter week with half the sets. Rescan and repeat blood tests around week 12."
     }
   ],
   "days": [
     {
       "day": 1,
       "letter": "A",
-      "title": "Push emphasis",
-      "focus": "Chest · shoulders · full body",
-      "duration": "45–60 min",
+      "title": "Squat + upper chest",
+      "focus": "Legs first · upper chest · lats",
+      "duration": "65–75 min",
       "strength": true,
-      "summary": "A steady start. Build your pressing strength, then balance it with supported back work, legs and core.",
+      "tag": "SESSION A",
+      "summary": "Legs go first while you are fresh. Then incline pressing for the upper chest, lats for width, and posture work. Exercises marked Pair are alternated back-to-back.",
       "exercises": [
         {
-          "id": "leg-press",
-          "name": "Leg press",
-          "group": "Quads & glutes",
-          "reps": "10–12",
-          "rest": 120,
-          "cue": "Keep your pelvis against the pad. Straighten your legs under control without snapping your knees backward.",
-          "initialSets": 2,
+          "id": "hack-squat",
+          "name": "Hack squat or Smith squat",
+          "group": "Quads & glutes · Heavy",
+          "sets": 4,
+          "reps": "5–8",
+          "rest": 180,
+          "cue": "Heavy lift. Ribs down, controlled depth, knees track over toes. Two lighter warm-up sets first.",
           "demo": {
-            "url": "https://www.youtube.com/watch?v=q4W4_VJbKW0",
-            "title": "How To Do A 45 Degree Leg Press",
-            "source": "PureGym",
+            "url": "https://www.youtube.com/watch?v=VY8ko6ecfso",
+            "title": "How To Do A MACHINE HACK SQUAT | Exercise Demonstration Video and Guide",
+            "source": "Live Lean TV Daily Exercises",
             "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/leg-presses/45-degree-leg-press/",
-            "note": "The demo uses a 45-degree machine. Ask staff to show you the settings on your gym’s model."
+            "sourcePage": "https://www.youtube.com/watch?v=VY8ko6ecfso",
+            "note": "No hack squat machine? A Smith-machine squat with feet slightly forward works the same muscles."
           }
         },
         {
-          "id": "chest-press",
-          "name": "Machine chest press",
-          "group": "Chest & triceps",
-          "reps": "8–12",
-          "rest": 120,
-          "cue": "Set the handles around mid-chest. Keep your head comfortably supported and use a pain-free range.",
-          "initialSets": 2,
+          "id": "incline-smith-press",
+          "name": "Incline Smith press",
+          "group": "Upper chest",
+          "sets": 3,
+          "reps": "6–10",
+          "rest": 150,
+          "cue": "Low incline. Lower the bar to your upper chest, shoulder blades pinned back.",
           "demo": {
-            "url": "https://www.youtube.com/watch?v=CIykDiF4sfg",
-            "title": "How To Do A Seated Chest Press",
-            "source": "PureGym",
+            "url": "https://www.youtube.com/watch?v=YY1xch8GEoc",
+            "title": "How to do incline smith machine bench press",
+            "source": "Medina Health and Fitness",
             "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/seated-chest-press/",
+            "sourcePage": "https://www.youtube.com/watch?v=YY1xch8GEoc",
             "note": null
           }
         },
-        {
-          "id": "supported-row",
-          "name": "Chest-supported row",
-          "group": "Upper back",
-          "reps": "10–12",
-          "rest": 120,
-          "cue": "Keep your chest on the pad. Pull smoothly without lifting your chin or shrugging.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=Nx0TzjgsI-0",
-            "title": "How To Do An Incline Row (Chest Supported Row)",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/back/rows/incline-row/",
-            "note": "The demo uses dumbbells on an incline bench. A chest-supported row machine is also suitable."
-          }
-        },
-        {
-          "id": "leg-curl",
-          "name": "Seated hamstring curl",
-          "group": "Hamstrings",
-          "reps": "10–15",
-          "rest": 90,
-          "cue": "Align your knees with the machine pivot. Control the curl and the return.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=3BWiLFc8Dbg",
-            "title": "Seated Leg Curl Video Exercise Guide",
-            "source": "Muscle & Strength",
-            "durationSeconds": null,
-            "sourcePage": "https://www.muscleandstrength.com/exercises/seated-leg-curl",
-            "note": null
-          }
-        },
-        {
-          "id": "lateral-raise",
-          "name": "Dumbbell lateral raise",
-          "group": "Side shoulders",
-          "reps": "12–15",
-          "rest": 60,
-          "cue": "Use light weights. Raise through a comfortable range without swinging or shrugging.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
-            "title": "Dumbbell Lateral Raise Video Exercise Guide",
-            "source": "Muscle & Strength",
-            "durationSeconds": null,
-            "sourcePage": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
-            "note": null
-          }
-        },
-        {
-          "id": "dead-bug",
-          "name": "Dead bug",
-          "group": "Core control",
-          "reps": "6–8",
-          "rest": 60,
-          "perSide": true,
-          "cue": "Exhale as you extend opposite limbs. Shorten the movement before your lower back arches.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=9RK9UUgKIQE",
-            "title": "How To Do Deadbugs",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/abs/deadbugs/",
-            "note": null
-          }
-        }
-      ]
-    },
-    {
-      "day": 2,
-      "letter": "R",
-      "title": "Recovery day",
-      "focus": "Easy movement · recover",
-      "duration": "Optional 20–30 min",
-      "strength": false,
-      "summary": "An easy walk is enough. Let yesterday’s work settle and return fresh for Session B.",
-      "exercises": []
-    },
-    {
-      "day": 3,
-      "letter": "B",
-      "title": "Pull emphasis",
-      "focus": "Back · rear shoulders · full body",
-      "duration": "50–65 min",
-      "strength": true,
-      "summary": "Build your pulling strength and shoulder control, with supported single-leg work and a simple hip extension.",
-      "exercises": [
         {
           "id": "lat-pulldown",
           "name": "Neutral-grip lat pulldown",
-          "group": "Lats & biceps",
+          "group": "Lats · width",
+          "sets": 3,
           "reps": "8–12",
           "rest": 120,
-          "cue": "Use parallel handles with palms facing each other. Pull toward your upper chest without swinging.",
-          "initialSets": 2,
+          "cue": "Pull toward your upper chest, elbows down and in. No swinging.",
           "demo": {
             "url": "https://www.youtube.com/watch?v=IjoFCmLX7z0",
             "title": "How To Do A Close Grip (Neutral) Lat Pulldown",
@@ -190,195 +103,36 @@
           }
         },
         {
-          "id": "split-squat",
-          "name": "Supported split squat",
-          "group": "Quads & glutes",
-          "reps": "8–10",
-          "rest": 120,
-          "perSide": true,
-          "cue": "Begin with body weight and hold a stable support. Lower straight down through a comfortable range.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=rlvpaDkc76g",
-            "title": "How To Do Split Squats",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/squats/split-squats/",
-            "note": "Hold a stable support and start without weights. The demo shows the same stationary movement without support."
-          }
-        },
-        {
-          "id": "incline-press",
-          "name": "Incline dumbbell press",
-          "group": "Upper chest",
-          "reps": "8–12",
-          "rest": 120,
-          "cue": "Use a modest bench incline. Keep your head supported, wrists steady and feet planted.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=oZVCBM9f8Eo",
-            "title": "How To Do An Incline Dumbbell Press",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/incline-dumbbell-press/",
-            "note": null
-          }
-        },
-        {
-          "id": "glute-bridge",
-          "name": "Glute bridge",
-          "group": "Glutes",
+          "id": "leg-curl",
+          "name": "Seated hamstring curl",
+          "group": "Hamstrings",
+          "sets": 3,
           "reps": "10–15",
           "rest": 90,
-          "cue": "Push through your feet and lift through your hips. Finish before your lower back starts to arch.",
-          "initialSets": 2,
+          "cue": "Knees in line with the machine pivot. Control the curl and the return.",
           "demo": {
-            "url": "https://www.youtube.com/watch?v=tqp5XQPpTxY",
-            "title": "How To Do A Glute Bridge",
-            "source": "PureGym",
+            "url": "https://www.youtube.com/watch?v=3BWiLFc8Dbg",
+            "title": "Seated Leg Curl Video Exercise Guide",
+            "source": "Muscle & Strength",
             "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/glutes/glute-bridge/glute-bridges/",
+            "sourcePage": "https://www.muscleandstrength.com/exercises/seated-leg-curl",
             "note": null
           }
         },
         {
-          "id": "reverse-pec-deck",
-          "name": "Reverse pec deck",
-          "group": "Rear shoulders",
+          "id": "leg-extension",
+          "name": "Leg extension",
+          "group": "Quads",
+          "sets": 2,
           "reps": "12–15",
           "rest": 60,
-          "cue": "Keep your chest supported. Open your arms smoothly without shrugging or forcing the end range.",
-          "initialSets": 2,
+          "cue": "Pair with calf raise. Pause briefly at the top, lower slowly.",
           "demo": {
-            "url": "https://www.youtube.com/watch?v=hosMrtU1BA8",
-            "title": "Reverse Pec Deck",
-            "source": "One Coaching",
-            "durationSeconds": null,
-            "sourcePage": "https://onecoaching.co.uk/exercise/reverse-pec-deck/",
-            "note": null
-          }
-        },
-        {
-          "id": "dumbbell-curl",
-          "name": "Dumbbell curl",
-          "group": "Biceps",
-          "reps": "10–15",
-          "rest": 60,
-          "cue": "Keep your upper arms still. Lower slowly rather than swinging your body.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=MtXdEcW3Eog",
-            "title": "How To Do A Double Arm Curl (Dumbbell Bicep Curl)",
+            "url": "https://www.youtube.com/watch?v=4ZDm5EbiFI8",
+            "title": "How To Do A Leg Extension",
             "source": "PureGym",
             "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/arms-and-shoulders/bicep-curl/dumbbell-bicep-curls/",
-            "note": "The demo is seated. Keep your upper arms steady if you perform your curls standing."
-          }
-        },
-        {
-          "id": "pallof-press",
-          "name": "Pallof press",
-          "group": "Core stability",
-          "reps": "8–10",
-          "rest": 60,
-          "perSide": true,
-          "cue": "Stand side-on to a cable at chest height. Press forward while keeping your torso facing ahead.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://theprehabguys.com/vimeo-video/pallof-press/",
-            "title": "Pallof Press",
-            "source": "[P]rehab",
-            "durationSeconds": 49,
-            "sourcePage": "https://theprehabguys.com/vimeo-video/pallof-press/",
-            "note": null
-          }
-        }
-      ]
-    },
-    {
-      "day": 4,
-      "letter": "E",
-      "title": "Easy cardio",
-      "focus": "Walk or cycle · comfortable pace",
-      "duration": "Optional 20–30 min",
-      "strength": false,
-      "summary": "Walk or cycle at a pace that lets you speak in full sentences. Keep it easy enough to support tomorrow’s lifting.",
-      "exercises": []
-    },
-    {
-      "day": 5,
-      "letter": "C",
-      "title": "Leg emphasis",
-      "focus": "Legs · posterior chain · full body",
-      "duration": "50–65 min",
-      "strength": true,
-      "summary": "Practise your squat and hip hinge, then round out the week with chest, back, calves and trunk stability.",
-      "exercises": [
-        {
-          "id": "goblet-squat",
-          "name": "Goblet squat to a bench",
-          "group": "Quads & glutes",
-          "reps": "8–12",
-          "rest": 120,
-          "cue": "Hold a light dumbbell at your chest. Touch a stable bench lightly, then stand under control.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=zBV3ceGyAxw",
-            "title": "How To Do A Goblet Squat",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/squats/goblet-squat/",
-            "note": "Use a stable bench behind you. Touch it lightly rather than dropping or rocking onto it."
-          }
-        },
-        {
-          "id": "dumbbell-rdl",
-          "name": "Dumbbell Romanian deadlift",
-          "group": "Hamstrings & glutes",
-          "reps": "8–12",
-          "rest": 120,
-          "cue": "Ask a trainer to check your hip hinge first. Push your hips backward, keep the weights close and stop before your back rounds.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=QFbZevA7dps",
-            "title": "How to do a Dumbbell Romanian Deadlift | Proper Form & Technique | NASM",
-            "source": "National Academy of Sports Medicine (NASM)",
-            "durationSeconds": null,
-            "sourcePage": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
-            "note": null
-          }
-        },
-        {
-          "id": "chest-press",
-          "name": "Machine chest press",
-          "group": "Chest & triceps",
-          "reps": "10–12",
-          "rest": 120,
-          "cue": "Keep your head supported. Press through a comfortable range without forcing your shoulders backward.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=CIykDiF4sfg",
-            "title": "How To Do A Seated Chest Press",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/seated-chest-press/",
-            "note": null
-          }
-        },
-        {
-          "id": "cable-row",
-          "name": "Seated cable row",
-          "group": "Upper back & lats",
-          "reps": "10–12",
-          "rest": 120,
-          "cue": "Keep your torso steady and your neck relaxed. Avoid rocking backward to finish the pull.",
-          "initialSets": 2,
-          "demo": {
-            "url": "https://www.youtube.com/watch?v=lJoozxC0Rns",
-            "title": "How To Do A Seated Cable Row",
-            "source": "PureGym",
-            "durationSeconds": null,
-            "sourcePage": "https://www.youtube.com/watch?v=lJoozxC0Rns",
+            "sourcePage": "https://www.youtube.com/watch?v=4ZDm5EbiFI8",
             "note": null
           }
         },
@@ -386,10 +140,10 @@
           "id": "calf-raise",
           "name": "Calf raise",
           "group": "Calves",
-          "reps": "12–15",
+          "sets": 3,
+          "reps": "10–15",
           "rest": 60,
-          "cue": "Hold a support for balance. Pause briefly at the top and lower slowly.",
-          "initialSets": 2,
+          "cue": "Pair with leg extension. Full stretch at the bottom, pause at the top.",
           "demo": {
             "url": "https://www.youtube.com/watch?v=Zep-wKHWkNM",
             "title": "How To Do A Calf Raise",
@@ -400,13 +154,470 @@
           }
         },
         {
-          "id": "triceps-pressdown",
-          "name": "Rope triceps pressdown",
-          "group": "Triceps",
+          "id": "lateral-raise",
+          "name": "Dumbbell lateral raise",
+          "group": "Side shoulders · width",
+          "sets": 3,
+          "reps": "12–20",
+          "rest": 60,
+          "cue": "Pair with face pull. Light weights, no swinging or shrugging.",
+          "demo": {
+            "url": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+            "title": "Dumbbell Lateral Raise Video Exercise Guide",
+            "source": "Muscle & Strength",
+            "durationSeconds": null,
+            "sourcePage": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+            "note": null
+          }
+        },
+        {
+          "id": "face-pull",
+          "name": "Face pull",
+          "group": "Rear shoulders · posture",
+          "sets": 3,
+          "reps": "15–20",
+          "rest": 60,
+          "cue": "Pair with lateral raise. Rope to your forehead, squeeze the shoulder blades together.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
+            "title": "How to do a Face Pull | Proper Form & Technique | NASM",
+            "source": "National Academy of Sports Medicine (NASM)",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
+            "note": null
+          }
+        },
+        {
+          "id": "hanging-knee-raise",
+          "name": "Hanging knee raise",
+          "group": "Abs · grip",
+          "sets": 3,
           "reps": "10–15",
           "rest": 60,
-          "cue": "Keep your elbows near your sides. Straighten your arms without moving your shoulders or leaning on the rope.",
-          "initialSets": 2,
+          "cue": "Pair with farmer's carry. Curl your pelvis up rather than just lifting the knees. No swinging.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=O7iDA3ory-w",
+            "title": "How To Do Hanging Knee Raises",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=O7iDA3ory-w",
+            "note": null
+          }
+        },
+        {
+          "id": "farmers-carry",
+          "name": "Farmer's carry",
+          "group": "Grip · forearms · core",
+          "sets": 3,
+          "reps": "30–40",
+          "rest": 90,
+          "distance": true,
+          "cue": "Pair with knee raise. Heavy dumbbells, stand tall, short steps. No straps.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=8OtwXwrJizk",
+            "title": "How To Do A Farmer's Walk (Farmer's Carry)",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=8OtwXwrJizk",
+            "note": null
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "letter": "W",
+      "title": "Walk + bands",
+      "focus": "Brisk walk · posture routine",
+      "duration": "30–40 min",
+      "strength": false,
+      "tag": "WALK",
+      "summary": "Brisk 30-minute walk — it counts toward your 120 cardio minutes a week, the minimum for HDL to rise. Optional 10-minute band routine: band face pull 2 × 15, wall slides 2 × 10, thoracic extension 2 × 8, chin tucks 2 × 10, doorway chest and hip-flexor stretches.",
+      "exercises": []
+    },
+    {
+      "day": 3,
+      "letter": "B",
+      "title": "Pull-ups + hinge",
+      "focus": "Back width · hamstrings · upper chest",
+      "duration": "65–75 min",
+      "strength": true,
+      "tag": "SESSION B",
+      "summary": "Pull-ups are the main lift. Start at 5 sets of 2 and add one rep to one set each week until you reach 5 × 5, then move to 4 × 6–8.",
+      "exercises": [
+        {
+          "id": "pull-up",
+          "name": "Pull-ups",
+          "group": "Lats · Main lift",
+          "sets": 5,
+          "reps": "2–5",
+          "rest": 150,
+          "cue": "Main lift. Full hang to chin over the bar, no swinging. Stop one rep before failure. Add a rep to one set each week.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=Y44dJcTEhJE",
+            "title": "How to Do a Perfect Pull-Up – Complete Beginner's Guide",
+            "source": "Emilio Calisthenics",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=Y44dJcTEhJE",
+            "note": null
+          }
+        },
+        {
+          "id": "dumbbell-rdl",
+          "name": "Romanian deadlift",
+          "group": "Hamstrings & glutes · Heavy",
+          "sets": 3,
+          "reps": "6–10",
+          "rest": 150,
+          "cue": "Heavy lift. Barbell or dumbbells. Push your hips back, flat back, weights close to your legs. No straps.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=QFbZevA7dps",
+            "title": "How to do a Dumbbell Romanian Deadlift | Proper Form & Technique | NASM",
+            "source": "National Academy of Sports Medicine (NASM)",
+            "durationSeconds": null,
+            "sourcePage": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
+            "note": "The demo uses dumbbells; a barbell Romanian deadlift works the same way."
+          }
+        },
+        {
+          "id": "smith-split-squat",
+          "name": "Smith machine split squat",
+          "group": "Quads & glutes",
+          "sets": 3,
+          "reps": "8–10",
+          "rest": 120,
+          "perSide": true,
+          "cue": "Front foot flat on the floor, back knee travels down. The fixed bar removes the balance problem.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=xGTQxrcCuEo",
+            "title": "Smith Machine Split Squat",
+            "source": "Women's Strength Nation by Holly Perkins",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=xGTQxrcCuEo",
+            "note": null
+          }
+        },
+        {
+          "id": "incline-press",
+          "name": "Incline dumbbell press",
+          "group": "Upper chest",
+          "sets": 3,
+          "reps": "8–12",
+          "rest": 120,
+          "cue": "Low incline. Press up and slightly in, wrists stacked over elbows.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=oZVCBM9f8Eo",
+            "title": "How To Do An Incline Dumbbell Press",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/incline-dumbbell-press/",
+            "note": null
+          }
+        },
+        {
+          "id": "supported-row",
+          "name": "Chest-supported row",
+          "group": "Mid-back · posture",
+          "sets": 4,
+          "reps": "8–12",
+          "rest": 120,
+          "cue": "Chest stays on the pad. Squeeze the shoulder blades together without shrugging.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=Nx0TzjgsI-0",
+            "title": "How To Do An Incline Row (Chest Supported Row)",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.puregym.com/exercises/back/rows/incline-row/",
+            "note": "The demo uses dumbbells on an incline bench. A chest-supported row machine is also suitable."
+          }
+        },
+        {
+          "id": "reverse-pec-deck",
+          "name": "Reverse pec deck",
+          "group": "Rear shoulders · posture",
+          "sets": 3,
+          "reps": "15–20",
+          "rest": 60,
+          "cue": "Pair with lateral raise. Open the arms smoothly, no shrugging.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=hosMrtU1BA8",
+            "title": "Reverse Pec Deck",
+            "source": "One Coaching",
+            "durationSeconds": null,
+            "sourcePage": "https://onecoaching.co.uk/exercise/reverse-pec-deck/",
+            "note": null
+          }
+        },
+        {
+          "id": "lateral-raise",
+          "name": "Dumbbell lateral raise",
+          "group": "Side shoulders · width",
+          "sets": 3,
+          "reps": "12–20",
+          "rest": 60,
+          "cue": "Pair with reverse pec deck. Light weights, no swinging or shrugging.",
+          "demo": {
+            "url": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+            "title": "Dumbbell Lateral Raise Video Exercise Guide",
+            "source": "Muscle & Strength",
+            "durationSeconds": null,
+            "sourcePage": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+            "note": null
+          }
+        },
+        {
+          "id": "cable-crunch",
+          "name": "Kneeling cable crunch",
+          "group": "Abs",
+          "sets": 3,
+          "reps": "12–15",
+          "rest": 60,
+          "cue": "Pair with wrist curls. Round your spine to bring ribs toward hips; the hips stay still.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=0KEP6A1deBE",
+            "title": "Exercise Tutorial: Kneeling Cable Crunch",
+            "source": "Travis Tarrant",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=0KEP6A1deBE",
+            "note": null
+          }
+        },
+        {
+          "id": "wrist-curl",
+          "name": "Wrist curl",
+          "group": "Forearm flexors",
+          "sets": 2,
+          "reps": "15–20",
+          "rest": 45,
+          "cue": "Forearms on a bench, palms up. Slow, full range.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+            "title": "How To Perform Wrist Curls And Reverse Wrist Curls With Dumbbells",
+            "source": "Whats Up Dude",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+            "note": "The same video shows the reverse wrist curl."
+          }
+        },
+        {
+          "id": "reverse-wrist-curl",
+          "name": "Reverse wrist curl",
+          "group": "Forearm extensors",
+          "sets": 2,
+          "reps": "15–20",
+          "rest": 45,
+          "cue": "Forearms on a bench, palms down. Lighter weight, slow, full range.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+            "title": "How To Perform Wrist Curls And Reverse Wrist Curls With Dumbbells",
+            "source": "Whats Up Dude",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+            "note": "The reverse wrist curl is the second half of the video."
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "letter": "W",
+      "title": "Walk + bands",
+      "focus": "Brisk walk · posture routine",
+      "duration": "30–40 min",
+      "strength": false,
+      "tag": "WALK",
+      "summary": "Brisk 30-minute walk — it counts toward your 120 cardio minutes a week, the minimum for HDL to rise. Optional 10-minute band routine: band face pull 2 × 15, wall slides 2 × 10, thoracic extension 2 × 8, chin tucks 2 × 10, doorway chest and hip-flexor stretches.",
+      "exercises": []
+    },
+    {
+      "day": 5,
+      "letter": "C",
+      "title": "Legs + dips",
+      "focus": "Legs first · back · arms",
+      "duration": "70–75 min",
+      "strength": true,
+      "tag": "SESSION C",
+      "summary": "Leg press goes first. Pull-up practice, glutes and hamstrings, then assisted dips, arms and core.",
+      "exercises": [
+        {
+          "id": "leg-press",
+          "name": "Leg press",
+          "group": "Quads & glutes · Heavy",
+          "sets": 4,
+          "reps": "6–10",
+          "rest": 150,
+          "cue": "Heavy lift. Pelvis stays on the pad. Do not lock your knees at the top — your scan shows mild knee hyperextension.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=q4W4_VJbKW0",
+            "title": "How To Do A 45 Degree Leg Press",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/leg-presses/45-degree-leg-press/",
+            "note": "The demo uses a 45-degree machine. Ask staff to show you the settings on your gym’s model."
+          }
+        },
+        {
+          "id": "pull-up",
+          "name": "Pull-ups",
+          "group": "Lats",
+          "sets": 2,
+          "reps": "2–5",
+          "rest": 150,
+          "cue": "Stop one rep before failure, then go straight to the band-assisted sets.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=Y44dJcTEhJE",
+            "title": "How to Do a Perfect Pull-Up – Complete Beginner's Guide",
+            "source": "Emilio Calisthenics",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=Y44dJcTEhJE",
+            "note": null
+          }
+        },
+        {
+          "id": "band-assisted-pull-up",
+          "name": "Band-assisted pull-ups",
+          "group": "Lats · volume",
+          "sets": 2,
+          "reps": "8–12",
+          "rest": 90,
+          "cue": "Loop the band under a knee or foot. Use a thinner band as you get stronger.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=ZHllQTJf7eA",
+            "title": "Resistance Band Assisted Pullups",
+            "source": "White Lion Athletics",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=ZHllQTJf7eA",
+            "note": null
+          }
+        },
+        {
+          "id": "dead-hang",
+          "name": "Dead hang",
+          "group": "Grip · shoulders",
+          "sets": 1,
+          "reps": "20–60",
+          "rest": 60,
+          "timed": true,
+          "cue": "Hang as long as you can with the shoulders active, not shrugged up to your ears.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=5FQJJvUAYx4",
+            "title": "How To: Dead Hang Exercise",
+            "source": "Live Lean TV Daily Exercises",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=5FQJJvUAYx4",
+            "note": null
+          }
+        },
+        {
+          "id": "hip-thrust",
+          "name": "Hip thrust",
+          "group": "Glutes",
+          "sets": 3,
+          "reps": "8–12",
+          "rest": 120,
+          "cue": "Upper back on a bench, ribs down, chin tucked. Squeeze the glutes hard at the top.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=IZ0TQNlMBU0",
+            "title": "How to do a Hip Thrust CORRECTLY - Complete Step-by-Step Guide",
+            "source": "Strength and Division",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=IZ0TQNlMBU0",
+            "note": null
+          }
+        },
+        {
+          "id": "leg-curl",
+          "name": "Seated hamstring curl",
+          "group": "Hamstrings",
+          "sets": 3,
+          "reps": "10–15",
+          "rest": 90,
+          "cue": "Knees in line with the machine pivot. Control the curl and the return.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=3BWiLFc8Dbg",
+            "title": "Seated Leg Curl Video Exercise Guide",
+            "source": "Muscle & Strength",
+            "durationSeconds": null,
+            "sourcePage": "https://www.muscleandstrength.com/exercises/seated-leg-curl",
+            "note": null
+          }
+        },
+        {
+          "id": "assisted-dip",
+          "name": "Assisted dips",
+          "group": "Chest & triceps",
+          "sets": 3,
+          "reps": "5–8",
+          "rest": 120,
+          "cue": "Pair with hammer curl. Machine or band. Lower until upper arms are parallel, lean slightly forward. Front-shoulder pain: stop and do a flat dumbbell press.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=kbmVlw-i0Vs",
+            "title": "Exercise Tutorial: Assisted Dips",
+            "source": "Travis Tarrant",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=kbmVlw-i0Vs",
+            "note": "No machine? Loop a band across the dip bars and kneel on it."
+          }
+        },
+        {
+          "id": "hammer-curl",
+          "name": "Hammer curl",
+          "group": "Biceps · forearms",
+          "sets": 3,
+          "reps": "10–15",
+          "rest": 60,
+          "cue": "Pair with dips. Palms face each other, upper arms still, lower slowly.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=B4RznoFvTl4",
+            "title": "How To Do Hammer Curls",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=B4RznoFvTl4",
+            "note": null
+          }
+        },
+        {
+          "id": "calf-raise",
+          "name": "Calf raise",
+          "group": "Calves",
+          "sets": 3,
+          "reps": "10–15",
+          "rest": 60,
+          "cue": "Pair with lateral raise. Full stretch at the bottom, pause at the top.",
+          "demo": {
+            "url": "https://www.youtube.com/watch?v=Zep-wKHWkNM",
+            "title": "How To Do A Calf Raise",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.puregym.com/exercises/legs/calf-exercises/calf-raises/",
+            "note": null
+          }
+        },
+        {
+          "id": "lateral-raise",
+          "name": "Dumbbell lateral raise",
+          "group": "Side shoulders · width",
+          "sets": 3,
+          "reps": "12–20",
+          "rest": 60,
+          "cue": "Pair with calf raise. Light weights, no swinging or shrugging.",
+          "demo": {
+            "url": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+            "title": "Dumbbell Lateral Raise Video Exercise Guide",
+            "source": "Muscle & Strength",
+            "durationSeconds": null,
+            "sourcePage": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+            "note": null
+          }
+        },
+        {
+          "id": "triceps-pressdown",
+          "name": "Rope triceps pushdown",
+          "group": "Triceps",
+          "sets": 3,
+          "reps": "10–15",
+          "rest": 60,
+          "cue": "Pair with side plank. Elbows by your sides, spread the rope at the bottom.",
           "demo": {
             "url": "https://theprehabguys.com/vimeo-video/tricep-pushdown-rope/",
             "title": "Tricep Pushdown - Rope",
@@ -418,43 +629,45 @@
         },
         {
           "id": "side-plank",
-          "name": "Side plank — knees bent",
-          "group": "Lateral core",
-          "reps": "15–25",
-          "rest": 60,
+          "name": "Side plank",
+          "group": "Obliques",
+          "sets": 3,
+          "reps": "30–45",
+          "rest": 45,
           "perSide": true,
           "timed": true,
-          "cue": "Start on your forearm and bent knees. Keep breathing; stop before your hips sag.",
-          "initialSets": 2,
+          "cue": "Pair with pushdown. Straight line from head to feet; stop before the hips sag.",
           "demo": {
-            "url": "https://theprehabguys.com/vimeo-video/side-plank-on-knees/",
-            "title": "Side Plank - On Knees",
-            "source": "[P]rehab",
-            "durationSeconds": 73,
-            "sourcePage": "https://theprehabguys.com/vimeo-video/side-plank-on-knees/",
-            "note": null
+            "url": "https://www.youtube.com/watch?v=Oe9Tp9SvTCE",
+            "title": "How To Do A Side Plank",
+            "source": "PureGym",
+            "durationSeconds": null,
+            "sourcePage": "https://www.youtube.com/watch?v=Oe9Tp9SvTCE",
+            "note": "Too hard at first? Bend your knees and build up."
           }
         }
       ]
     },
     {
       "day": 6,
-      "letter": "E",
-      "title": "Optional movement",
-      "focus": "Easy walk · comfortable mobility",
-      "duration": "Optional 20–30 min",
+      "letter": "R",
+      "title": "Rest",
+      "focus": "Recover · eat · sleep",
+      "duration": "No session",
       "strength": false,
-      "summary": "Choose an easy walk or a few comfortable mobility movements. Skip this if you need the rest.",
+      "tag": "REST",
+      "summary": "Full rest. Eat your normal menu and sleep 7–9 hours — recovery is when the muscle is built.",
       "exercises": []
     },
     {
       "day": 7,
-      "letter": "R",
-      "title": "Rest & reset",
-      "focus": "Recover · review the week",
-      "duration": "No session required",
+      "letter": "E",
+      "title": "Cardio day",
+      "focus": "60 min easy cardio",
+      "duration": "60 min",
       "strength": false,
-      "summary": "Take the day off planned training. Check your energy and recovery before the next week. Missed sessions do not need to be combined.",
+      "tag": "CARDIO",
+      "summary": "60 minutes on the bike or an incline walk at a pace where you can talk but not sing. Longer sessions raise HDL the most; prefer bike or walking to running while you bulk.",
       "exercises": []
     }
   ]

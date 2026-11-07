@@ -1,14 +1,15 @@
 # WorkInGYM
 
-A phone-friendly gym companion adapted from [MoeHussein/Workin](https://github.com/MoeHussein/Workin), replacing the calisthenics block with a six-week gym program.
+A phone-friendly gym companion adapted from [MoeHussein/Workin](https://github.com/MoeHussein/Workin), running Training Plan v3.
 
-- Three full-body sessions with push, pull and leg emphases; Saturday, Monday and Wednesday by default.
-- Per-set weight, repetitions or hold-time logging, completion, previous-session reference and session notes.
-- Direct demonstrations for all 19 distinct exercises; verified short-clip durations are shown where available. Variant differences are explained.
+- Three full-body sessions, legs first: A squat + upper chest, B pull-ups + hinge, C legs + dips. Sunday, Tuesday and Thursday by default, with brisk walks Monday and Wednesday and a 60-minute cardio day on Saturday (≥120 cardio minutes a week).
+- Per-exercise set counts at full volume from week one, stopping 1–2 reps before failure; heavy first lifts for strength.
+- Per-set weight, repetitions, seconds or metres logging, completion, previous-session reference and session notes.
+- Direct demonstrations for all 27 distinct exercises; variant differences are explained.
+- Posture warm-up and finishing stretches on every strength day.
 - Rest timer that uses an absolute deadline so returning from another tab updates correctly.
-- Optional third working sets from week three, enabled only when recovery is good.
-- Three-page plan PDF with clickable demos, session image downloads, and JSON backup import/export.
-- Browser-local progress under a separate WorkInGYM storage key. No automatic cross-device sync.
+- Plan PDF with clickable demos, session image downloads, and JSON backup import/export.
+- Browser-local progress under a separate WorkInGYM storage key. Saves from the earlier schedule keep their logs and move to the new Sunday start. No automatic cross-device sync.
 
 ## Development
 
@@ -38,4 +39,4 @@ The Sites project is configured in `.openai/hosting.json`. The GitHub Pages work
 
 ## Training
 
-Start with light loads and two working sets. The program is a starting routine, not a medical diagnosis or clearance. Follow existing medical advice, adapt painful movements, and review recovery and logs at the end of six weeks.
+Use loads that leave 1–2 clean reps in every set and add weight once every set reaches the top of its range. The program is a training routine, not a medical diagnosis or clearance. Follow existing medical advice, adapt painful movements, review logs at week 4, and rescan around week 12.

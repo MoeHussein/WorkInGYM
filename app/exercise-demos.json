@@ -5,23 +5,15 @@
     "source": "PureGym",
     "durationSeconds": null,
     "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/leg-presses/45-degree-leg-press/",
-    "note": "The demo uses a 45-degree machine. Ask staff to show you the settings on your gym\u2019s model."
+    "note": "The demo uses a 45-degree machine. Ask staff to show you the settings on your gym’s model."
   },
-  "chest-press": {
-    "url": "https://www.youtube.com/watch?v=CIykDiF4sfg",
-    "title": "How To Do A Seated Chest Press",
+  "lat-pulldown": {
+    "url": "https://www.youtube.com/watch?v=IjoFCmLX7z0",
+    "title": "How To Do A Close Grip (Neutral) Lat Pulldown",
     "source": "PureGym",
     "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/seated-chest-press/",
+    "sourcePage": "https://www.puregym.com/exercises/back/lat-exercises/close-grip-lat-pulldown/",
     "note": null
-  },
-  "supported-row": {
-    "url": "https://www.youtube.com/watch?v=Nx0TzjgsI-0",
-    "title": "How To Do An Incline Row (Chest Supported Row)",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/back/rows/incline-row/",
-    "note": "The demo uses dumbbells on an incline bench. A chest-supported row machine is also suitable."
   },
   "leg-curl": {
     "url": "https://www.youtube.com/watch?v=3BWiLFc8Dbg",
@@ -39,29 +31,21 @@
     "sourcePage": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
     "note": null
   },
-  "dead-bug": {
-    "url": "https://www.youtube.com/watch?v=9RK9UUgKIQE",
-    "title": "How To Do Deadbugs",
+  "calf-raise": {
+    "url": "https://www.youtube.com/watch?v=Zep-wKHWkNM",
+    "title": "How To Do A Calf Raise",
     "source": "PureGym",
     "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/abs/deadbugs/",
+    "sourcePage": "https://www.puregym.com/exercises/legs/calf-exercises/calf-raises/",
     "note": null
   },
-  "lat-pulldown": {
-    "url": "https://www.youtube.com/watch?v=IjoFCmLX7z0",
-    "title": "How To Do A Close Grip (Neutral) Lat Pulldown",
+  "supported-row": {
+    "url": "https://www.youtube.com/watch?v=Nx0TzjgsI-0",
+    "title": "How To Do An Incline Row (Chest Supported Row)",
     "source": "PureGym",
     "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/back/lat-exercises/close-grip-lat-pulldown/",
-    "note": null
-  },
-  "split-squat": {
-    "url": "https://www.youtube.com/watch?v=rlvpaDkc76g",
-    "title": "How To Do Split Squats",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/squats/split-squats/",
-    "note": "Hold a stable support and start without weights. The demo shows the same stationary movement without support."
+    "sourcePage": "https://www.puregym.com/exercises/back/rows/incline-row/",
+    "note": "The demo uses dumbbells on an incline bench. A chest-supported row machine is also suitable."
   },
   "incline-press": {
     "url": "https://www.youtube.com/watch?v=oZVCBM9f8Eo",
@@ -69,14 +53,6 @@
     "source": "PureGym",
     "durationSeconds": null,
     "sourcePage": "https://www.puregym.com/exercises/chest/bench-press/incline-dumbbell-press/",
-    "note": null
-  },
-  "glute-bridge": {
-    "url": "https://www.youtube.com/watch?v=tqp5XQPpTxY",
-    "title": "How To Do A Glute Bridge",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/glutes/glute-bridge/glute-bridges/",
     "note": null
   },
   "reverse-pec-deck": {
@@ -87,53 +63,13 @@
     "sourcePage": "https://onecoaching.co.uk/exercise/reverse-pec-deck/",
     "note": null
   },
-  "dumbbell-curl": {
-    "url": "https://www.youtube.com/watch?v=MtXdEcW3Eog",
-    "title": "How To Do A Double Arm Curl (Dumbbell Bicep Curl)",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/arms-and-shoulders/bicep-curl/dumbbell-bicep-curls/",
-    "note": "The demo is seated. Keep your upper arms steady if you perform your curls standing."
-  },
-  "pallof-press": {
-    "url": "https://theprehabguys.com/vimeo-video/pallof-press/",
-    "title": "Pallof Press",
-    "source": "[P]rehab",
-    "durationSeconds": 49,
-    "sourcePage": "https://theprehabguys.com/vimeo-video/pallof-press/",
-    "note": null
-  },
-  "goblet-squat": {
-    "url": "https://www.youtube.com/watch?v=zBV3ceGyAxw",
-    "title": "How To Do A Goblet Squat",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/legs/quad-exercises/squats/goblet-squat/",
-    "note": "Use a stable bench behind you. Touch it lightly rather than dropping or rocking onto it."
-  },
   "dumbbell-rdl": {
     "url": "https://www.youtube.com/watch?v=QFbZevA7dps",
     "title": "How to do a Dumbbell Romanian Deadlift | Proper Form & Technique | NASM",
     "source": "National Academy of Sports Medicine (NASM)",
     "durationSeconds": null,
     "sourcePage": "https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift",
-    "note": null
-  },
-  "cable-row": {
-    "url": "https://www.youtube.com/watch?v=lJoozxC0Rns",
-    "title": "How To Do A Seated Cable Row",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.youtube.com/watch?v=lJoozxC0Rns",
-    "note": null
-  },
-  "calf-raise": {
-    "url": "https://www.youtube.com/watch?v=Zep-wKHWkNM",
-    "title": "How To Do A Calf Raise",
-    "source": "PureGym",
-    "durationSeconds": null,
-    "sourcePage": "https://www.puregym.com/exercises/legs/calf-exercises/calf-raises/",
-    "note": null
+    "note": "The demo uses dumbbells; a barbell Romanian deadlift works the same way."
   },
   "triceps-pressdown": {
     "url": "https://theprehabguys.com/vimeo-video/tricep-pushdown-rope/",
@@ -143,12 +79,140 @@
     "sourcePage": "https://theprehabguys.com/vimeo-video/tricep-pushdown-rope/",
     "note": null
   },
-  "side-plank": {
-    "url": "https://theprehabguys.com/vimeo-video/side-plank-on-knees/",
-    "title": "Side Plank - On Knees",
-    "source": "[P]rehab",
-    "durationSeconds": 73,
-    "sourcePage": "https://theprehabguys.com/vimeo-video/side-plank-on-knees/",
+  "hack-squat": {
+    "url": "https://www.youtube.com/watch?v=VY8ko6ecfso",
+    "title": "How To Do A MACHINE HACK SQUAT | Exercise Demonstration Video and Guide",
+    "source": "Live Lean TV Daily Exercises",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=VY8ko6ecfso",
+    "note": "No hack squat machine? A Smith-machine squat with feet slightly forward works the same muscles."
+  },
+  "incline-smith-press": {
+    "url": "https://www.youtube.com/watch?v=YY1xch8GEoc",
+    "title": "How to do incline smith machine bench press",
+    "source": "Medina Health and Fitness",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=YY1xch8GEoc",
     "note": null
+  },
+  "leg-extension": {
+    "url": "https://www.youtube.com/watch?v=4ZDm5EbiFI8",
+    "title": "How To Do A Leg Extension",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=4ZDm5EbiFI8",
+    "note": null
+  },
+  "face-pull": {
+    "url": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
+    "title": "How to do a Face Pull | Proper Form & Technique | NASM",
+    "source": "National Academy of Sports Medicine (NASM)",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=eTCBSFlCJ_s",
+    "note": null
+  },
+  "hanging-knee-raise": {
+    "url": "https://www.youtube.com/watch?v=O7iDA3ory-w",
+    "title": "How To Do Hanging Knee Raises",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=O7iDA3ory-w",
+    "note": null
+  },
+  "farmers-carry": {
+    "url": "https://www.youtube.com/watch?v=8OtwXwrJizk",
+    "title": "How To Do A Farmer's Walk (Farmer's Carry)",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=8OtwXwrJizk",
+    "note": null
+  },
+  "pull-up": {
+    "url": "https://www.youtube.com/watch?v=Y44dJcTEhJE",
+    "title": "How to Do a Perfect Pull-Up – Complete Beginner's Guide",
+    "source": "Emilio Calisthenics",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=Y44dJcTEhJE",
+    "note": null
+  },
+  "smith-split-squat": {
+    "url": "https://www.youtube.com/watch?v=xGTQxrcCuEo",
+    "title": "Smith Machine Split Squat",
+    "source": "Women's Strength Nation by Holly Perkins",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=xGTQxrcCuEo",
+    "note": null
+  },
+  "cable-crunch": {
+    "url": "https://www.youtube.com/watch?v=0KEP6A1deBE",
+    "title": "Exercise Tutorial: Kneeling Cable Crunch",
+    "source": "Travis Tarrant",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=0KEP6A1deBE",
+    "note": null
+  },
+  "wrist-curl": {
+    "url": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+    "title": "How To Perform Wrist Curls And Reverse Wrist Curls With Dumbbells",
+    "source": "Whats Up Dude",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+    "note": "The same video shows the reverse wrist curl."
+  },
+  "reverse-wrist-curl": {
+    "url": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+    "title": "How To Perform Wrist Curls And Reverse Wrist Curls With Dumbbells",
+    "source": "Whats Up Dude",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=04u4uGk3Ia8",
+    "note": "The reverse wrist curl is the second half of the video."
+  },
+  "band-assisted-pull-up": {
+    "url": "https://www.youtube.com/watch?v=ZHllQTJf7eA",
+    "title": "Resistance Band Assisted Pullups",
+    "source": "White Lion Athletics",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=ZHllQTJf7eA",
+    "note": null
+  },
+  "dead-hang": {
+    "url": "https://www.youtube.com/watch?v=5FQJJvUAYx4",
+    "title": "How To: Dead Hang Exercise",
+    "source": "Live Lean TV Daily Exercises",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=5FQJJvUAYx4",
+    "note": null
+  },
+  "hip-thrust": {
+    "url": "https://www.youtube.com/watch?v=IZ0TQNlMBU0",
+    "title": "How to do a Hip Thrust CORRECTLY - Complete Step-by-Step Guide",
+    "source": "Strength and Division",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=IZ0TQNlMBU0",
+    "note": null
+  },
+  "assisted-dip": {
+    "url": "https://www.youtube.com/watch?v=kbmVlw-i0Vs",
+    "title": "Exercise Tutorial: Assisted Dips",
+    "source": "Travis Tarrant",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=kbmVlw-i0Vs",
+    "note": "No machine? Loop a band across the dip bars and kneel on it."
+  },
+  "hammer-curl": {
+    "url": "https://www.youtube.com/watch?v=B4RznoFvTl4",
+    "title": "How To Do Hammer Curls",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=B4RznoFvTl4",
+    "note": null
+  },
+  "side-plank": {
+    "url": "https://www.youtube.com/watch?v=Oe9Tp9SvTCE",
+    "title": "How To Do A Side Plank",
+    "source": "PureGym",
+    "durationSeconds": null,
+    "sourcePage": "https://www.youtube.com/watch?v=Oe9Tp9SvTCE",
+    "note": "Too hard at first? Bend your knees and build up."
   }
 }

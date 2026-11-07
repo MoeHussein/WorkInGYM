@@ -12,9 +12,12 @@ import {
 } from "../lib/workout-utils.mjs";
 import {
   demoFor,
+  FINISH,
   PROGRAM_START,
+  scheduleVersion,
   STORAGE_KEY,
-  setsFor,
+  unitFor,
+  WARM_UP,
   weekGuidance,
   workoutDays,
   type Exercise,
@@ -29,16 +32,17 @@ type SessionLog = {
 };
 type Store = {
   version: 1;
+  scheduleVersion: number;
   programStart: string;
-  extraSet: boolean;
   logs: Record<string, SessionLog>;
 };
 type View = "today" | "plan" | "history";
+const MAX_SETS = 6;
 const blankSet = (): SetLog => ({ kg: "", reps: "", done: false });
 const freshStore = (): Store => ({
   version: 1,
+  scheduleVersion,
   programStart: PROGRAM_START,
-  extraSet: false,
   logs: {},
 });
 const weekday = new Intl.DateTimeFormat("en", { weekday: "short" });
@@ -133,10 +137,13 @@ function restoreStore(raw: string | null): Store {
   )
     throw new Error("Invalid workout data");
   parseDateKey(value.programStart);
+  // A new schedule moves the default start day; older saves keep their logs
+  // but adopt the new start date so sessions land on the intended weekdays.
+  const sameSchedule = value.scheduleVersion === scheduleVersion;
   const safe: Store = {
     version: 1,
-    programStart: value.programStart,
-    extraSet: value.extraSet === true,
+    scheduleVersion,
+    programStart: sameSchedule ? value.programStart : PROGRAM_START,
     logs: {},
   };
   for (const [date, log] of Object.entries(value.logs)) {
@@ -151,7 +158,7 @@ function restoreStore(raw: string | null): Store {
     for (const [id, rows] of Object.entries(log.sets ?? {})) {
       if (!Array.isArray(rows)) continue;
       sets[id] = rows
-        .slice(0, 3)
+        .slice(0, MAX_SETS)
         .map((row) => ({
           kg: typeof row?.kg === "string" ? row.kg.slice(0, 8) : "",
           reps: typeof row?.reps === "string" ? row.reps.slice(0, 4) : "",
@@ -257,20 +264,21 @@ export default function Home() {
       store.logs[date]?.completed &&
       workoutDays[store.logs[date].day - 1]?.strength,
   ).length;
-  const countFor = (i: number) => setsFor(week, i, store.extraSet);
-  const rowsFor = (exercise: Exercise, i: number) =>
+  const rowsFor = (exercise: Exercise) =>
     Array.from(
-      { length: countFor(i) },
+      { length: exercise.sets },
       (_, index) => session?.sets[exercise.id]?.[index] ?? blankSet(),
     );
-  const totalSets = day.exercises.reduce((sum, _, i) => sum + countFor(i), 0);
-  const doneSets = day.exercises.reduce(
-    (sum, exercise, i) =>
-      sum + rowsFor(exercise, i).filter((row) => row.done).length,
+  const totalSets = day.exercises.reduce(
+    (sum, exercise) => sum + exercise.sets,
     0,
   );
-  const completedExercises = day.exercises.filter((exercise, i) =>
-    rowsFor(exercise, i).every((row) => row.done),
+  const doneSets = day.exercises.reduce(
+    (sum, exercise) => sum + rowsFor(exercise).filter((row) => row.done).length,
+    0,
+  );
+  const completedExercises = day.exercises.filter((exercise) =>
+    rowsFor(exercise).every((row) => row.done),
   ).length;
   const progress = totalSets ? Math.round((doneSets / totalSets) * 100) : 0;
 
@@ -290,13 +298,12 @@ export default function Home() {
   }
   function updateSet(
     exercise: Exercise,
-    i: number,
     rowIndex: number,
     patch: Partial<SetLog>,
   ) {
     changeSession((log) => {
       const rows = Array.from(
-        { length: countFor(i) },
+        { length: exercise.sets },
         (_, index) => log.sets[exercise.id]?.[index] ?? blankSet(),
       );
       rows[rowIndex] = { ...rows[rowIndex], ...patch };
@@ -391,72 +398,80 @@ export default function Home() {
     try {
       const { jsPDF } = await import("jspdf");
       const pdf = new jsPDF();
+      const BOTTOM = 288;
+      const writeBlock = (label: string, text: string, y: number) => {
+        const lines = pdf.splitTextToSize(pdfText(text), 175);
+        if (y + 6 + lines.length * 4 > BOTTOM) {
+          pdf.addPage();
+          y = 20;
+        }
+        pdf.setFont("helvetica", "bold");
+        pdf.setFontSize(9);
+        pdf.text(label, 17, y);
+        pdf.setFont("helvetica", "normal");
+        pdf.text(lines, 17, y + 5);
+        return y + 9 + lines.length * 4;
+      };
       workoutDays
         .filter((item) => item.strength)
-        .forEach((item, pageIndex) => {
-          if (pageIndex) pdf.addPage();
+        .forEach((item, sessionIndex) => {
+          if (sessionIndex) pdf.addPage();
           pdf.setFillColor(29, 57, 46);
           pdf.rect(0, 0, 210, 46, "F");
           pdf.setTextColor(223, 247, 166);
           pdf.setFont("helvetica", "bold");
           pdf.setFontSize(11);
-          pdf.text("WORKINGYM / SIX-WEEK GYM BLOCK", 17, 16);
+          pdf.text("WORKINGYM / TRAINING PLAN V3", 17, 16);
           pdf.setFontSize(24);
           pdf.setTextColor(255, 255, 255);
-          pdf.text(`Session ${item.letter}: ${item.title}`, 17, 33);
+          pdf.text(pdfText(`Session ${item.letter}: ${item.title}`), 17, 33);
           pdf.setTextColor(45, 57, 49);
           pdf.setFontSize(10);
           pdf.setFont("helvetica", "normal");
           pdf.text(
             pdfText(
-              `Week ${week} / ${item.duration} / ${week < 3 ? "3-4" : "2-3"} reps in reserve`,
+              `${item.duration} / stop each set with 1-2 reps left / Pair = alternate back-to-back`,
             ),
             17,
             57,
           );
-          let y = 69;
+          let y = writeBlock("Warm-up", WARM_UP, 64);
           for (const [i, exercise] of item.exercises.entries()) {
+            const lines = pdf.splitTextToSize(pdfText(exercise.cue), 175);
+            const height = 16 + lines.length * 3.4;
+            if (y + height > BOTTOM) {
+              pdf.addPage();
+              y = 20;
+            }
             pdf.setFont("helvetica", "bold");
-            pdf.setFontSize(11);
+            pdf.setFontSize(10.5);
             pdf.text(pdfText(`${i + 1}. ${exercise.name}`), 17, y);
             pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(9);
+            pdf.setFontSize(8);
             pdf.text(
               pdfText(
-                `${setsFor(week, i, store.extraSet)} sets x ${exercise.reps}${exercise.timed ? " sec" : " reps"}${exercise.perSide ? " / side" : ""} / Rest ${exercise.rest}s`,
+                `${exercise.sets} sets x ${exercise.reps} ${unitFor(exercise)}${exercise.perSide ? " / side" : ""} / Rest ${exercise.rest}s`,
               ),
               17,
-              y + 6,
+              y + 4.5,
             );
-            const lines = pdf.splitTextToSize(pdfText(exercise.cue), 175);
-            pdf.text(lines, 17, y + 12);
+            pdf.text(lines, 17, y + 9);
             const demo = demoFor(exercise.id);
             if (demo) {
               pdf.setTextColor(48, 104, 69);
               pdf.textWithLink(
                 "Watch exercise demo",
                 17,
-                y + 14 + lines.length * 4,
+                y + 10.5 + lines.length * 3.4,
                 { url: demo.url },
               );
               pdf.setTextColor(45, 57, 49);
             }
-            y += 20 + lines.length * 4;
+            y += height;
           }
-          pdf.setFontSize(8);
-          pdf.text(
-            "Warm up 5-8 minutes, then do 1-2 lighter practice sets for the first leg and upper-body exercises.",
-            17,
-            278,
-          );
-          pdf.text(
-            "Train on nonconsecutive days. Start light, keep breathing and use your existing medical advice.",
-            17,
-            284,
-          );
-          pdf.text(`WorkInGYM / ${pageIndex + 1} of 3`, 17, 290);
+          writeBlock("Finish", FINISH, y + 2);
         });
-      pdf.save(`workingym-plan-week-${week}.pdf`);
+      pdf.save(`workingym-plan-v3.pdf`);
       setNotice(
         "Your three-session plan PDF is downloaded, with clickable demonstration links.",
       );
@@ -511,7 +526,7 @@ export default function Home() {
         <div className="hero-copy">
           <span className="eyebrow">
             <span className="little-line" />
-            THE SIX-WEEK GYM BLOCK
+            TRAINING PLAN V3 · LEGS FIRST
           </span>
           <h1>
             A little stronger.
@@ -519,9 +534,10 @@ export default function Home() {
             <span>Every session.</span>
           </h1>
           <p>
-            Three days of focused strength. Room to recover.
-            <br className="desktop-break" /> A plan you can actually keep
-            showing up for.
+            Three full-body strength days built from your scan: legs first,
+            then posture, back width and upper chest.
+            <br className="desktop-break" /> Plus 120 minutes of cardio a week
+            for your heart.
           </p>
           <div className="hero-tags">
             <span>
@@ -536,7 +552,7 @@ export default function Home() {
                 .join(" · ")}
             </span>
             <span>
-              <Icon name="clock" size={15} /> 45–65 minutes
+              <Icon name="clock" size={15} /> 65–75 minutes
             </span>
             <span>Full body · A / B / C</span>
           </div>
@@ -599,7 +615,7 @@ export default function Home() {
               </button>
             </div>
             <div className="day-picker">
-              {dates.map((date, i) => {
+              {dates.map((date) => {
                 const scheduled =
                   workoutDays[getProgramDayIndex(store.programStart, date) - 1];
                 const isDone = store.logs[date]?.completed;
@@ -615,15 +631,7 @@ export default function Home() {
                     <span>{weekday.format(parseDateKey(date))}</span>
                     <strong>{parseDateKey(date).getDate()}</strong>
                     <small>
-                      {isDone ? (
-                        <Icon name="check" size={14} />
-                      ) : scheduled.strength ? (
-                        `SESSION ${scheduled.letter}`
-                      ) : i === 6 ? (
-                        "REST"
-                      ) : (
-                        "RECOVER"
-                      )}
+                      {isDone ? <Icon name="check" size={14} /> : scheduled.tag}
                     </small>
                   </button>
                 );
@@ -691,9 +699,7 @@ export default function Home() {
                   </span>
                   {day.strength && (
                     <>
-                      <span>
-                        {week < 3 ? "3–4" : "2–3"} reps left in the tank
-                      </span>
+                      <span>1–2 reps left in the tank</span>
                       <span>
                         {doneSets}/{totalSets} sets logged
                       </span>
@@ -714,15 +720,10 @@ export default function Home() {
                           warm-up
                         </span>
                         <small>
-                          5–8 MIN <b>+</b>
+                          5 MIN <b>+</b>
                         </small>
                       </summary>
-                      <p>
-                        Walk or cycle easily for 5–8 minutes. Then do 1–2
-                        lighter practice sets for your first leg exercise and
-                        first upper-body exercise. These do not count as working
-                        sets.
-                      </p>
+                      <p>{WARM_UP}</p>
                     </details>
                     <div className="logging-note">
                       Log one dumbbell’s weight, the machine’s displayed weight,
@@ -731,7 +732,7 @@ export default function Home() {
                     </div>
                     <div className="exercise-list">
                       {day.exercises.map((exercise, i) => {
-                        const rows = rowsFor(exercise, i);
+                        const rows = rowsFor(exercise);
                         const demo = demoFor(exercise.id);
                         const previous = previousFor(exercise.id);
                         const done = rows.every((row) => row.done);
@@ -754,8 +755,8 @@ export default function Home() {
                                 </span>
                                 <h3>{exercise.name}</h3>
                                 <span className="prescription">
-                                  {countFor(i)} sets <i>×</i> {exercise.reps}{" "}
-                                  {exercise.timed ? "sec" : "reps"}
+                                  {exercise.sets} sets <i>×</i> {exercise.reps}{" "}
+                                  {unitFor(exercise)}
                                   {exercise.perSide ? " / side" : ""}
                                 </span>
                               </div>
@@ -788,10 +789,14 @@ export default function Home() {
                                 <span>WEIGHT · KG</span>
                                 <span>
                                   {exercise.timed
-                                    ? "SECONDS"
-                                    : exercise.perSide
-                                      ? "REPS / SIDE"
-                                      : "REPS"}
+                                    ? exercise.perSide
+                                      ? "SEC / SIDE"
+                                      : "SECONDS"
+                                    : exercise.distance
+                                      ? "METRES"
+                                      : exercise.perSide
+                                        ? "REPS / SIDE"
+                                        : "REPS"}
                                 </span>
                                 <span>DONE</span>
                               </div>
@@ -820,7 +825,7 @@ export default function Home() {
                                         (Number(value) >= 0 &&
                                           Number(value) <= 999)
                                       )
-                                        updateSet(exercise, i, rowIndex, {
+                                        updateSet(exercise, rowIndex, {
                                           kg: value,
                                         });
                                     }}
@@ -832,7 +837,7 @@ export default function Home() {
                                     max="999"
                                     step="1"
                                     placeholder={exercise.reps.split("–")[0]}
-                                    aria-label={`${exercise.name} set ${rowIndex + 1} ${exercise.timed ? "seconds" : "repetitions"}`}
+                                    aria-label={`${exercise.name} set ${rowIndex + 1} ${exercise.timed ? "seconds" : exercise.distance ? "metres" : "repetitions"}`}
                                     value={row.reps}
                                     disabled={!loaded}
                                     onChange={(event) => {
@@ -843,7 +848,7 @@ export default function Home() {
                                           Number(value) >= 0 &&
                                           Number(value) <= 999)
                                       )
-                                        updateSet(exercise, i, rowIndex, {
+                                        updateSet(exercise, rowIndex, {
                                           reps: value,
                                         });
                                     }}
@@ -855,7 +860,7 @@ export default function Home() {
                                     aria-label={`${row.done ? "Uncheck" : "Complete"} ${exercise.name} set ${rowIndex + 1}`}
                                     aria-pressed={row.done}
                                     onClick={() =>
-                                      updateSet(exercise, i, rowIndex, {
+                                      updateSet(exercise, rowIndex, {
                                         done: !row.done,
                                       })
                                     }
@@ -884,6 +889,18 @@ export default function Home() {
                         );
                       })}
                     </div>
+                    <details className="warmup">
+                      <summary>
+                        <span>
+                          <span className="warmup-icon">↘</span>Finish with
+                          two stretches
+                        </span>
+                        <small>
+                          3 MIN <b>+</b>
+                        </small>
+                      </summary>
+                      <p>{FINISH}</p>
+                    </details>
                   </>
                 ) : (
                   <div className="recovery-content">
@@ -1061,7 +1078,7 @@ export default function Home() {
                   <Icon name="download" size={17} />
                   <span>
                     {busy ? "Preparing download…" : "Download workout plan"}
-                    <small>3-page PDF · clickable demos</small>
+                    <small>PDF · all three sessions · clickable demos</small>
                   </span>
                   <span>↗</span>
                 </button>
@@ -1094,8 +1111,9 @@ export default function Home() {
             <span className="eyebrow">SIMPLE BY DESIGN</span>
             <h2>Your plan, at a glance.</h2>
             <p>
-              Three full-body sessions with a different emphasis. Recovery days
-              between them.
+              Three full-body sessions, legs first. Brisk walks on two rest
+              days and one longer cardio day give you 120 minutes of cardio a
+              week.
             </p>
           </div>
           <div className="plan-session-grid">
@@ -1118,8 +1136,8 @@ export default function Home() {
                       <li key={exercise.id}>
                         {exercise.name}
                         <span>
-                          {exercise.reps}
-                          {exercise.timed ? "s" : ""}
+                          {exercise.sets} × {exercise.reps}
+                          {exercise.timed ? "s" : exercise.distance ? " m" : ""}
                         </span>
                       </li>
                     ))}
@@ -1136,39 +1154,40 @@ export default function Home() {
           </div>
           <div className="guide-grid">
             <article className="guide-card">
-              <span className="eyebrow">01 / START COMFORTABLY</span>
-              <h3>Leave something in the tank.</h3>
+              <span className="eyebrow">01 / TRAIN HARD ENOUGH</span>
+              <h3>Stop 1–2 reps before failure.</h3>
               <p>
-                In weeks 1–2, use two working sets and finish with 3–4 clean
-                repetitions left. From week 3, aim for 2–3 repetitions left. Use
-                a comfortable range and keep breathing.
+                Full volume from day one. Lifts marked Heavy or Main get two
+                lighter warm-up sets and 2–3 minutes of rest; everything else
+                60–120 seconds. Exercises marked Pair are alternated
+                back-to-back.
               </p>
             </article>
             <article className="guide-card">
               <span className="eyebrow">02 / BUILD GRADUALLY</span>
               <h3>Reps first. Then weight.</h3>
               <p>
-                When every set reaches the top of its range with good control
-                and at least two repetitions left, use the smallest available
-                weight increase. Keep equipment settings consistent.
+                When every set reaches the top of its range with 1–2 reps left,
+                use the smallest available weight increase. Pull-ups: add one
+                rep to one set each week up to 5 × 5, then 4 × 6–8.
               </p>
             </article>
             <article className="guide-card">
-              <span className="eyebrow">03 / RECOVER WELL</span>
-              <h3>Three good days are enough.</h3>
+              <span className="eyebrow">03 / PROTECT YOUR POSTURE</span>
+              <h3>More pulling than pushing.</h3>
               <p>
-                Keep a recovery day between lifting sessions. An optional fourth
-                day can be an easy walk or bike ride. Reduce the workload when
-                soreness or fatigue affects the next session.
+                Warm up with chin tucks and band pull-aparts, finish with chest
+                and hip-flexor stretches. Avoid shrugs and heavy overhead
+                pressing for now — your scan shows overactive upper traps.
               </p>
             </article>
             <article className="guide-card">
-              <span className="eyebrow">04 / MOVE WITH CONTROL</span>
-              <h3>Comfort guides the range.</h3>
+              <span className="eyebrow">04 / RECOVER & REVIEW</span>
+              <h3>Lighter week when needed.</h3>
               <p>
-                Keep your neck comfortable, control your knees at the top of leg
-                movements, and have a trainer check the hip hinge. Change or
-                stop movements that cause joint, neck or back pain.
+                If lifts stall for two weeks and joints ache, do one week with
+                half the sets. Front-shoulder pain on dips: switch to a flat
+                dumbbell press. Rescan and repeat blood tests around week 12.
               </p>
             </article>
           </div>
@@ -1177,8 +1196,8 @@ export default function Home() {
               <span className="eyebrow">MAKE IT YOUR BLOCK</span>
               <h3>Program settings</h3>
               <p>
-                Changing your start date anchors the A / recovery / B / recovery
-                / C rhythm to that day. The default starts on Saturday.
+                Changing your start date anchors the A / walk / B / walk / C /
+                rest / cardio rhythm to that day. The default starts on Sunday.
               </p>
             </div>
             <label className="start-date-label">
@@ -1199,25 +1218,6 @@ export default function Home() {
                 }}
               />
             </label>
-            <label className="extra-set-label">
-              <input
-                type="checkbox"
-                checked={store.extraSet}
-                onChange={(event) =>
-                  setStore((current) => ({
-                    ...current,
-                    extraSet: event.target.checked,
-                  }))
-                }
-              />
-              <span>
-                Add a third set when ready
-                <small>
-                  First 3 exercises only, from week 3. Enable this when recovery
-                  is good.
-                </small>
-              </span>
-            </label>
           </section>
           <details className="health-note">
             <summary>
@@ -1231,9 +1231,10 @@ export default function Home() {
               breathlessness.
             </p>
             <p>
-              The six-week block ends with a review rather than automatically
-              restarting. Frequency and volume can be adjusted as your recovery
-              and strength develop.
+              Volume is set where the evidence places productive training
+              (about 9–16 hard sets per muscle per week), with heavier sets
+              first for strength. Aerobic exercise raises HDL once it reaches
+              about 120 minutes a week, with longer sessions helping most.
             </p>
             <a
               href="https://acsm.org/resistance-training-guidelines-update-2026/"
@@ -1248,6 +1249,20 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               Split versus full-body training review ↗
+            </a>
+            <a
+              href="https://doi.org/10.1519/JSC.0000000000002200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Heavy vs light loads for strength (Schoenfeld 2017) ↗
+            </a>
+            <a
+              href="https://doi.org/10.1001/archinte.167.10.999"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Aerobic exercise and HDL (Kodama 2007) ↗
             </a>
           </details>
         </section>

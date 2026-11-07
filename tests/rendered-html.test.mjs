@@ -4,10 +4,20 @@ import {
   workoutDays,
   demoFor,
   setsFor,
+  unitFor,
   weekGuidance,
+  PROGRAM_START,
 } from "../app/workout-data.ts";
+import { getProgramDayIndex } from "../lib/workout-utils.mjs";
 
-test("the agreed gym program has three nonconsecutive strength days and 19 unique demonstrations", () => {
+const exercises = workoutDays.flatMap((day) => day.exercises);
+const find = (id) => exercises.find((exercise) => exercise.id === id);
+
+test("plan v3 has three nonconsecutive strength days and 27 demonstrated exercises", () => {
+  assert.deepEqual(
+    workoutDays.filter((day) => day.strength).map((day) => day.letter),
+    ["A", "B", "C"],
+  );
   assert.deepEqual(
     workoutDays.filter((day) => day.strength).map((day) => day.day),
     [1, 3, 5],
@@ -16,12 +26,10 @@ test("the agreed gym program has three nonconsecutive strength days and 19 uniqu
     workoutDays
       .filter((day) => day.strength)
       .map((day) => day.exercises.length),
-    [6, 7, 7],
+    [10, 10, 12],
   );
-  const ids = new Set(
-    workoutDays.flatMap((day) => day.exercises.map((exercise) => exercise.id)),
-  );
-  assert.equal(ids.size, 19);
+  const ids = new Set(exercises.map((exercise) => exercise.id));
+  assert.equal(ids.size, 27);
   for (const id of ids) {
     const demo = demoFor(id);
     assert.ok(demo?.url, `Missing demo for ${id}`);
@@ -35,21 +43,59 @@ test("the agreed gym program has three nonconsecutive strength days and 19 uniqu
   }
 });
 
-test("third working sets are optional, apply from week three, and only affect the first three exercises", () => {
-  assert.equal(setsFor(1, 0, true), 2);
-  assert.equal(setsFor(2, 2, true), 2);
-  assert.equal(setsFor(3, 0, false), 2);
-  assert.equal(setsFor(3, 2, true), 3);
-  assert.equal(setsFor(3, 3, true), 2);
-  assert.equal(setsFor(6, 0, true), 3);
-  assert.equal(weekGuidance.length, 6);
+test("each session lists an exercise only once, so set logs never collide", () => {
+  for (const day of workoutDays) {
+    const ids = day.exercises.map((exercise) => exercise.id);
+    assert.equal(new Set(ids).size, ids.length, `Duplicate in ${day.title}`);
+  }
 });
 
-test("side-specific and hold prescriptions keep their correct units", () => {
-  const exercises = workoutDays.flatMap((day) => day.exercises);
-  for (const id of ["dead-bug", "split-squat", "pallof-press", "side-plank"])
-    assert.equal(exercises.find((ex) => ex.id === id).perSide, true);
-  assert.equal(exercises.find((ex) => ex.id === "side-plank").timed, true);
-  assert.equal(exercises.find((ex) => ex.id === "side-plank").reps, "15–25");
-  assert.equal(exercises.find((ex) => ex.id === "leg-curl").rest, 90);
+test("sets come from the plan and fit the stored log limit", () => {
+  for (const exercise of exercises) {
+    assert.equal(setsFor(exercise), exercise.sets);
+    assert.ok(exercise.sets >= 1 && exercise.sets <= 6, exercise.id);
+  }
+  const pullUpsB = workoutDays[2].exercises.find((ex) => ex.id === "pull-up");
+  assert.equal(pullUpsB.sets, 5);
+  assert.equal(find("hack-squat").sets, 4);
+  assert.equal(find("supported-row").sets, 4);
+});
+
+test("weekly hard-set volume matches the v3 priorities", () => {
+  const strength = workoutDays.filter((day) => day.strength);
+  const total = (ids) =>
+    strength
+      .flatMap((day) => day.exercises)
+      .filter((exercise) => ids.includes(exercise.id))
+      .reduce((sum, exercise) => sum + exercise.sets, 0);
+  assert.equal(total(["hack-squat", "leg-extension", "smith-split-squat", "leg-press"]), 13);
+  assert.equal(total(["leg-curl", "dumbbell-rdl"]), 9);
+  assert.equal(total(["calf-raise"]), 6);
+  assert.equal(total(["lateral-raise"]), 9);
+  assert.equal(total(["incline-smith-press", "incline-press", "assisted-dip"]), 9);
+  assert.equal(
+    total(["lat-pulldown", "pull-up", "band-assisted-pull-up", "supported-row"]),
+    16,
+  );
+});
+
+test("side-specific, timed and distance prescriptions keep their units", () => {
+  for (const id of ["smith-split-squat", "side-plank"])
+    assert.equal(find(id).perSide, true);
+  assert.equal(unitFor(find("side-plank")), "sec");
+  assert.equal(unitFor(find("dead-hang")), "sec");
+  assert.equal(unitFor(find("farmers-carry")), "m");
+  assert.equal(unitFor(find("pull-up")), "reps");
+});
+
+test("the default week runs Sunday A, Tuesday B, Thursday C, Saturday cardio", () => {
+  assert.equal(new Date(`${PROGRAM_START}T12:00:00`).getDay(), 0);
+  const on = (date) => workoutDays[getProgramDayIndex(PROGRAM_START, date) - 1];
+  assert.equal(on("2026-11-08").letter, "A");
+  assert.equal(on("2026-11-09").tag, "WALK");
+  assert.equal(on("2026-11-10").letter, "B");
+  assert.equal(on("2026-11-12").letter, "C");
+  assert.equal(on("2026-11-13").tag, "REST");
+  assert.equal(on("2026-11-14").tag, "CARDIO");
+  assert.equal(weekGuidance.length, 6);
 });
