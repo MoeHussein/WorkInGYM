@@ -1,6 +1,8 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import {
+  FINISH,
   PROGRAM_START,
+  WARM_UP,
   workoutDays,
   weekGuidance,
   scheduleVersion,
@@ -8,20 +10,22 @@ import {
 import demos from "../app/exercise-demos.json" with { type: "json" };
 const plan = {
   name: "WorkInGYM",
-  schemaVersion: 1,
+  schemaVersion: 2,
   scheduleVersion,
   programStart: PROGRAM_START,
-  cycleLengthWeeks: 6,
   schedule:
-    "Saturday / Monday / Wednesday by default; three nonconsecutive full-body sessions.",
+    "Sunday A / Monday walk / Tuesday B / Wednesday walk / Thursday C / Friday rest / Saturday cardio by default.",
   progression:
-    "Weeks 1-2: two working sets with 3-4 repetitions left. From week 3: optional third set for the first three exercises, only when recovery is good. Increase load after reaching the top of every set with good control and at least two repetitions left.",
+    "Full volume from week 1. Stop each set with 1-2 reps left. Add weight after reaching the top of the range on every set. Pull-ups: add one rep to one set each week up to 5 x 5, then 4 x 6-8, then add weight.",
+  warmUp: WARM_UP,
+  finish: FINISH,
+  cardio:
+    "At least 120 minutes a week: 60-minute cardio day plus two 30-minute brisk walks.",
   weekGuidance,
   days: workoutDays.map((day) => ({
     ...day,
     exercises: day.exercises.map((exercise) => ({
       ...exercise,
-      initialSets: 2,
       demo: demos[exercise.id],
     })),
   })),
