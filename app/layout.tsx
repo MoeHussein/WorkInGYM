@@ -3,7 +3,7 @@ import "./globals.css";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const title = "WorkInGYM — Your daily stronger";
 const description =
-  "Three focused gym sessions, exercise demos, weight and rep logging, and room to recover. A six-week strength companion.";
+  "Three focused gym sessions, exercise demos, weight and rep logging, and room to recover. A legs-first strength companion.";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
